@@ -1,7 +1,7 @@
 ﻿namespace TrashBucked.Scripts
 {
-    public class InterectiveObject
+    public abstract class InteractiveObject
     {
-        protected virtual void Interaction;
+        protected abstract void Interaction();
     }
 }

@@ -1,17 +1,15 @@
-﻿using System;
-
-namespace Trash.Scripts
+﻿namespace TrashBucked.Scripts
 {
-    public sealed class PlayerBall : Player
+    public sealed partial class PlayerBall : Player
     {
-        public PlayerBall(float speed) : base(speed)
-        {
-            
-        }
-
-        private void FixedUpdate()
+       private void FixedUpdate()
         {
             Move();
+            Jump();
         }
+
+       public PlayerBall(float speed) : base(speed)
+       {
+       }
     }
 }
