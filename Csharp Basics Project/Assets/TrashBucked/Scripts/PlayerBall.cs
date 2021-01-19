@@ -1,4 +1,7 @@
-﻿namespace TrashBucked.Scripts
+﻿using System;
+using UnityEngine;
+
+namespace TrashBucked.Scripts
 {
     public sealed partial class PlayerBall : Player
     {
@@ -8,6 +11,7 @@
             Jump();
         }
 
+    
        public PlayerBall(float speed) : base(speed)
        {
        }

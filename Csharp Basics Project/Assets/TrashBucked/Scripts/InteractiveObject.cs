@@ -1,7 +1,10 @@
-﻿namespace TrashBucked.Scripts
+﻿using UnityEngine;
+
+namespace TrashBucked.Scripts
 {
-    public abstract class InteractiveObject
+    public abstract class InteractiveObject : MonoBehaviour
     {
         protected abstract void Interaction();
+        
     }
 }
