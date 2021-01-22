@@ -6,24 +6,28 @@ namespace TrashBucked.Scripts
     {
         private Material _material;
         private float _lengthFlay;
+        private DisplayBonuses _displayBonuses;
       
         private void Awake()
         {
             _material = GetComponent<Renderer>().material;
-            _lengthFlay = Random.Range(1.0f, 5.0f);            
+            _lengthFlay = Random.Range(1.0f, 5.0f);
+            _displayBonuses = new DisplayBonuses();
         }
         
         protected override void Interaction()
         {
+            _displayBonuses.Display(5);
+            //add smth
         }
 
         public void Fly()
         {
             var localPosition = transform.localPosition;
-            localPosition = new Vector3(localPosition.x,
+            localPosition = new Vector3(
+                localPosition.x,
                 Mathf.PingPong(Time.time, _lengthFlay),
                 localPosition.z);
-            transform.localPosition = localPosition;
         }
 
         public void Flicker()

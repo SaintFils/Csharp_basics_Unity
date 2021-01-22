@@ -11,7 +11,6 @@ namespace TrashBucked.Scripts
             Jump();
         }
 
-    
        public PlayerBall(float speed) : base(speed)
        {
        }
