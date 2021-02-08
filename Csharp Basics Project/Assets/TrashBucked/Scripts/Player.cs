@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TrashBucked.Scripts
 {
     public class Player : MonoBehaviour
     {
         public float speed;
-        private Rigidbody _rigidbody;
+        public float playerHealthPoint;
+        protected Rigidbody PlayerRigidbody;
 
         private void Start()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            PlayerRigidbody = GetComponent<Rigidbody>();
         }
         protected void Move()
         {
@@ -18,7 +20,27 @@ namespace TrashBucked.Scripts
             
             Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
             
-            _rigidbody.AddForce(movement * speed);
+            PlayerRigidbody.AddForce(movement * speed);
+        }
+
+        protected void TakeDamage(int damageAmount)
+        {
+            playerHealthPoint -= damageAmount;
+            if (playerHealthPoint <= 0)
+            {
+                SceneManager.LoadScene("SampleScene");
+            }
+        }
+
+        internal void TakeHeal(int healAmount)
+        {
+            Debug.Log(playerHealthPoint);
+            if (playerHealthPoint >= 15)
+            {
+                return;
+            }
+            playerHealthPoint += healAmount;
+            Debug.Log(playerHealthPoint + "after");
         }
 
         protected Player(float speed)

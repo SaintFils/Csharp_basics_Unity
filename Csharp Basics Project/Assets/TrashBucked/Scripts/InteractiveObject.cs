@@ -37,7 +37,7 @@ namespace TrashBucked.Scripts
         {
             if (TryGetComponent(out Renderer renderer))
             {
-                renderer.material.color = Color.cyan;
+                //Debug.Log("I was initialized"); Тут была смена цвета, но она у меня в апдейте есть в интерфейсе IFlicker
             }
         }
     }
