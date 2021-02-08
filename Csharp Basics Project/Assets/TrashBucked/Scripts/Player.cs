@@ -1,26 +1,34 @@
-﻿using UnityEngine;
+﻿using TrashBucked.Scripts.Managers;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TrashBucked.Scripts
 {
     public class Player : MonoBehaviour
     {
-        public float speed;
+        public float movementSpeed;
         public float playerHealthPoint;
         protected Rigidbody PlayerRigidbody;
+        private float _lastInput;
 
         private void Start()
         {
             PlayerRigidbody = GetComponent<Rigidbody>();
         }
-        protected void Move()
+        /*protected void Move()
         {
-            var moveHorizontal = -Input.GetAxis("Horizontal");
-            var moveVertical = -Input.GetAxis("Vertical");
+            var moveHorizontal = -Input.GetAxis(AxisManager.HORIZONTAL);
+            var moveVertical = -Input.GetAxis(AxisManager.VERTICAL);
             
             Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
             
-            PlayerRigidbody.AddForce(movement * speed);
+            PlayerRigidbody.AddForce(movement * movementSpeed);
+        }*/
+        protected void Move(float xInput,float zInput )
+        {
+            PlayerRigidbody.velocity = new Vector3(-xInput * movementSpeed,
+                PlayerRigidbody.velocity.y,
+                -zInput * movementSpeed);
         }
 
         protected void TakeDamage(int damageAmount)
@@ -43,9 +51,9 @@ namespace TrashBucked.Scripts
             Debug.Log(playerHealthPoint + "after");
         }
 
-        protected Player(float speed)
+        protected Player(float movementSpeed)
         {
-            this.speed = speed;
+            this.movementSpeed = movementSpeed;
         }
      
     }

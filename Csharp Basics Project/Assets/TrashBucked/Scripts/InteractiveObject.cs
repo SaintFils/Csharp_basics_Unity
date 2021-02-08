@@ -11,7 +11,7 @@ namespace TrashBucked.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!IsInteractable || !other.CompareTag("Player"))
+            if (!IsInteractable || !other.GetComponent<PlayerBall>())
             {
                 return;
             }
@@ -33,12 +33,6 @@ namespace TrashBucked.Scripts
             }
         }
 
-        void IInitialization.Action()
-        {
-            if (TryGetComponent(out Renderer renderer))
-            {
-                //Debug.Log("I was initialized"); Тут была смена цвета, но она у меня в апдейте есть в интерфейсе IFlicker
-            }
-        }
+        void IInitialization.Action() => Debug.Log("I was initialized");
     }
 }

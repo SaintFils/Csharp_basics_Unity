@@ -18,11 +18,13 @@ namespace TrashBucked.Scripts
         
         protected override void Interaction()
         {
-            _displayBonuses.Display(5);
-            gameObject.GetComponent<Player>().TakeHeal(_healAmount);
+            //_displayBonuses.Display(5);
+            Debug.Log($"Before {GetComponent<PlayerBall>().playerHealthPoint}");
+            gameObject.GetComponent<PlayerBall>().TakeHeal(_healAmount);
+            Debug.Log(GetComponent<PlayerBall>().playerHealthPoint);
         }
 
-        public void Fly() //разобрать чего тут не так, почему не летает. Сделать подпрыгивание или вращение
+        public void Fly() 
         {
             var localPosition = transform.localPosition;
             localPosition = new Vector3(localPosition.x, 

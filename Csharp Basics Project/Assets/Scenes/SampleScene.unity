@@ -3325,7 +3325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14293f1dbe7448bad07e027cacd0657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  movementSpeed: 2
   playerHealthPoint: 10
   force: 100
 --- !u!54 &585696457
@@ -8320,13 +8320,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327017459}
-  m_LocalRotation: {x: 0.12466761, y: -0, z: -0, w: 0.9921986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.92, y: 0.155, z: 7.793}
   m_LocalScale: {x: 0.1334669, y: 0.1334669, z: 0.1334669}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 14.323, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346380132
 GameObject:
   m_ObjectHideFlags: 0

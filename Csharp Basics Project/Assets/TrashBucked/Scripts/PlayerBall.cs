@@ -1,17 +1,22 @@
 ﻿using System;
+using TrashBucked.Scripts.Managers;
 using UnityEngine;
 
 namespace TrashBucked.Scripts
 {
     public sealed partial class PlayerBall : Player
     {
-       private void FixedUpdate()
+        private void Update()
         {
-            Move();
+            Move(Input.GetAxis(AxisManager.HORIZONTAL), Input.GetAxis(AxisManager.VERTICAL));
+        }
+
+        private void FixedUpdate()
+        {
             Jump();
         }
 
-       public PlayerBall(float speed) : base(speed)
+       public PlayerBall(float movementSpeed) : base(movementSpeed)
        {
        }
     }
