@@ -6,15 +6,18 @@ namespace TrashBucked.Scripts
     public sealed class DisplayBonuses
     {
         private Text _text;
+        public static int WinPoints;
 
         public DisplayBonuses()
         {
             _text = Object.FindObjectOfType<Text>();
+            WinPoints = 0;
         }
 
-        public void Display(int value)
+        public void CheckPoints(int value)
         {
-            _text.text = $"Вы набрали {value}";
+            WinPoints += value;
+            _text.text = $"Your score: {WinPoints}";
         }
     }
 }

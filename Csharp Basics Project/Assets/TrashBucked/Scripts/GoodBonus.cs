@@ -19,7 +19,7 @@ namespace TrashBucked.Scripts
         
         protected override void Interaction(Collider other)
         {
-            //_displayBonuses.Display(5);
+            _displayBonuses.CheckPoints(1);
             other.GetComponent<PlayerBall>().TakeHeal(_healAmount);
         }
 

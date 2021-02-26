@@ -21,7 +21,7 @@ namespace TrashBucked.Scripts
         protected override void Interaction(Collider other)
         {
             other.GetComponent<PlayerBall>().TakeDamage(_damageAmount);
-            // делаю таймер для замедления. стараюсь запихнуть обновление таймера в контроллер
+            // эффект замедления. реализовать к нему таймер
         }
 
         public void Fly()
