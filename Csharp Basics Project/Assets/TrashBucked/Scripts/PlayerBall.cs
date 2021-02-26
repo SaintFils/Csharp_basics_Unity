@@ -9,13 +9,9 @@ namespace TrashBucked.Scripts
         private void Update()
         {
             Move(Input.GetAxis(AxisManager.HORIZONTAL), Input.GetAxis(AxisManager.VERTICAL));
-        }
-
-        private void FixedUpdate()
-        {
             Jump();
         }
-
+     
        public PlayerBall(float movementSpeed) : base(movementSpeed)
        {
        }

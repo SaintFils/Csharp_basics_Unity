@@ -18,23 +18,23 @@ namespace TrashBucked.Scripts
             {
                 var interactiveObjects = _interactiveObjects[i];
                 if(interactiveObjects == null) continue;
-                /*if (interactiveObjects is IFlay fly)
+                if (interactiveObjects == null)
                 {
-                    fly.Fly();
-                }*/
-
-                switch (interactiveObjects)
-                {
-                    case IFlicker flicker:
-                        flicker.Flicker();
-                        break;
-                    case IRotation rotation:
-                        rotation.Rotation();
-                        break;
-                    case IFlay fly:
-                        fly.Fly();
-                        break;
+                    continue;
                 }
+                if (interactiveObjects is IFlay flay)
+                {
+                    flay.Fly();
+                }
+                if (interactiveObjects is IFlicker flicker)
+                {
+                    flicker.Flicker();
+                }
+                if (interactiveObjects is IRotation rotation)
+                {
+                    rotation.Rotation();
+                }
+
             }
         }
     }

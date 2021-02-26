@@ -7,27 +7,30 @@ namespace TrashBucked.Scripts
     public sealed class BadBonus : InteractiveObject, IFlay, IRotation
 
     {
+        [SerializeField] private int _damageAmount = 1;
         private float _lengthFlay;
         private float _speedRotation;
+        private float _flySpeedControl = 0.25f;
 
         private void Awake()
         {
-            _lengthFlay = Random.Range(1.0f, 5.0f);
-            _speedRotation = Random.Range(10.0f, 50.0f);
+            _lengthFlay = Random.Range(0.3f, 0.8f);
+            _speedRotation = Random.Range(30.0f, 50.0f);
         }
 
-        protected override void Interaction()
+        protected override void Interaction(Collider other)
         {
-            // speed down or smth like that
+            other.GetComponent<PlayerBall>().TakeDamage(_damageAmount);
+            // делаю таймер для замедления. стараюсь запихнуть обновление таймера в контроллер
         }
 
         public void Fly()
         {
             var localPosition = transform.localPosition;
-            localPosition = new Vector3(
-                localPosition.x,
-                Mathf.PingPong(Time.time, _lengthFlay),
+            localPosition = new Vector3(localPosition.x, 
+                Mathf.PingPong((Time.time * _flySpeedControl), _lengthFlay),
                 localPosition.z);
+            transform.localPosition = localPosition;
         }
 
         public void Rotation()

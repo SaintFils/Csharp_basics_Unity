@@ -7,7 +7,7 @@ namespace TrashBucked.Scripts
     public abstract class InteractiveObject : MonoBehaviour, IInteractable
     {
         public bool IsInteractable { get; } = true;
-        protected abstract void Interaction();
+        protected abstract void Interaction(Collider other);
 
         private void OnTriggerEnter(Collider other)
         {
@@ -15,7 +15,7 @@ namespace TrashBucked.Scripts
             {
                 return;
             }
-            Interaction();
+            Interaction(other);
             Destroy(gameObject);
         }
 
@@ -27,12 +27,18 @@ namespace TrashBucked.Scripts
 
         void IAction.Action()
         {
-            if (TryGetComponent(out Renderer renderer))
+            if (GetComponent<GoodBonus>())
             {
-                renderer.material.color = Random.ColorHSV();
+                if (TryGetComponent(out Renderer renderer))
+                {
+                    renderer.sharedMaterial.color = Random.ColorHSV();
+                }
             }
         }
 
-        void IInitialization.Action() => Debug.Log("I was initialized");
+        void IInitialization.Action()
+        {
+
+        } 
     }
 }

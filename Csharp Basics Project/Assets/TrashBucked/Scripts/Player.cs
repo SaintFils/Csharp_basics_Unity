@@ -1,5 +1,4 @@
-﻿using TrashBucked.Scripts.Managers;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TrashBucked.Scripts
@@ -31,24 +30,29 @@ namespace TrashBucked.Scripts
                 -zInput * movementSpeed);
         }
 
-        protected void TakeDamage(int damageAmount)
+        internal void TakeDamage(int damageAmount)
         {
             playerHealthPoint -= damageAmount;
             if (playerHealthPoint <= 0)
             {
-                SceneManager.LoadScene("SampleScene");
+                Invoke(nameof(RestartScene), 1.0f);
             }
+        }
+
+        private void RestartScene()
+        {
+                SceneManager.LoadScene("SampleScene");
         }
 
         internal void TakeHeal(int healAmount)
         {
-            Debug.Log(playerHealthPoint);
+            Debug.Log($"HP before heal {playerHealthPoint}");
             if (playerHealthPoint >= 15)
             {
                 return;
             }
             playerHealthPoint += healAmount;
-            Debug.Log(playerHealthPoint + "after");
+            Debug.Log($"HP after heal {playerHealthPoint}");
         }
 
         protected Player(float movementSpeed)
