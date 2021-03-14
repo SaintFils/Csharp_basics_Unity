@@ -1,4 +1,5 @@
 ﻿using System;
+using TrashBucked.Scripts.Managers;
 using UnityEngine;
 
 namespace TrashBucked.Scripts
@@ -10,12 +11,12 @@ namespace TrashBucked.Scripts
        
         private void OnCollisionStay(Collision other)
         {
-            if (other.collider.CompareTag("Floor")) _isOnFloor = true;
+            if (other.collider.CompareTag(AxisManager.Floor)) _isOnFloor = true;
         }
 
         private void OnCollisionExit(Collision other)
         {
-            if (other.collider.CompareTag("Floor")) _isOnFloor = false;
+            if (other.collider.CompareTag(AxisManager.Floor)) _isOnFloor = false;
         }
      
         private void Jump()

@@ -5,7 +5,8 @@ namespace TrashBucked.Scripts
 {
     public class Player : MonoBehaviour
     {
-        public float movementSpeed;
+        public float baseMovementSpeed;
+        private float _currentMovementSpeed;
         public float playerHealthPoint;
         protected Rigidbody PlayerRigidbody;
         private float _lastInput;
@@ -13,6 +14,7 @@ namespace TrashBucked.Scripts
         private void Start()
         {
             PlayerRigidbody = GetComponent<Rigidbody>();
+            _currentMovementSpeed = baseMovementSpeed;
         }
         /*protected void Move()
         {
@@ -25,9 +27,20 @@ namespace TrashBucked.Scripts
         }*/
         protected void Move(float xInput,float zInput )
         {
-            PlayerRigidbody.velocity = new Vector3(-xInput * movementSpeed,
+            PlayerRigidbody.velocity = new Vector3(-xInput * _currentMovementSpeed,
                 PlayerRigidbody.velocity.y,
-                -zInput * movementSpeed);
+                -zInput * _currentMovementSpeed);
+        }
+
+        internal void SetSlowSpeed(float value)
+        {
+            _currentMovementSpeed *= value;
+            Invoke(nameof(SetNormalSpeed), 2.0f);
+        }
+
+        internal void SetNormalSpeed()
+        {
+            _currentMovementSpeed = baseMovementSpeed;
         }
 
         internal void TakeDamage(int damageAmount)
@@ -55,9 +68,9 @@ namespace TrashBucked.Scripts
             Debug.Log($"HP after heal {playerHealthPoint}");
         }
 
-        protected Player(float movementSpeed)
+        protected Player(float baseMovementSpeed)
         {
-            this.movementSpeed = movementSpeed;
+            this.baseMovementSpeed = baseMovementSpeed;
         }
      
     }

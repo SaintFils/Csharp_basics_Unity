@@ -26,7 +26,7 @@ namespace TrashBucked.Scripts
             }
         }
         
-       public PlayerBall(float movementSpeed) : base(movementSpeed)
+       public PlayerBall(float baseMovementSpeed) : base(baseMovementSpeed)
        {
        }
     }
