@@ -5,9 +5,10 @@ namespace TrashBucked.Scripts
 {
     public class Player : MonoBehaviour
     {
-        public float baseMovementSpeed;
+        [SerializeField] private float baseMovementSpeed;
+        [SerializeField] private float playerHealthPoint; //сменить название, конвенция
+        
         private float _currentMovementSpeed;
-        public float playerHealthPoint;
         protected Rigidbody PlayerRigidbody;
         private float _lastInput;
 
@@ -54,8 +55,9 @@ namespace TrashBucked.Scripts
 
         private void RestartScene()
         {
-                SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("SampleScene");
         }
+        
 
         internal void TakeHeal(int healAmount)
         {

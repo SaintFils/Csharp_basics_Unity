@@ -21,7 +21,6 @@ namespace TrashBucked.Scripts
         protected override void Interaction(Collider other)
         {
             other.GetComponent<PlayerBall>().TakeDamage(_damageAmount);
-            
         }
 
         public void Fly()

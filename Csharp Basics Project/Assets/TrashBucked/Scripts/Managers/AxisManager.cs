@@ -6,6 +6,4 @@
         public const string VERTICAL = "Vertical";
         public const string Floor = "Floor";
     }
-
- 
-}
+ }
